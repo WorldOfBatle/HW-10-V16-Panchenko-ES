@@ -18,6 +18,16 @@ static std::vector<std::string> splitWords(const std::string& s) {
     return words;
 }
 
+// меняет в векторе "words" первое слово с последним, второе — с предпоследним и т.д.
+static void swapWords(std::vector<std::string>& words) {
+    size_t n = words.size();
+    for (size_t i = 0; i < n/2; ++i) {
+        std::string tmp = words[i];
+        words[i] = words[n - 1 - i];
+        words[n - 1 - i] = tmp;
+    }
+}
+
 int main() {
     // чтение строки
     std::string s;
@@ -25,6 +35,9 @@ int main() {
 
     // разобьем на слова
     auto words = splitWords(s);
-    
+
+    // поменяем пары
+    swapWords(words);
+
     return 0;
 }
