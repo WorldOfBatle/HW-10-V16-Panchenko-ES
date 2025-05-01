@@ -28,7 +28,21 @@ static void swapWords(std::vector<std::string>& words) {
     }
 }
 
+// собирает слова обратно в одну строку, разделяя их пробелом
+static std::string joinWords(const std::vector<std::string>& words) {
+    std::string res;
+    for (size_t i = 0; i < words.size(); ++i) {
+        res += words[i];
+        if (i + 1 < words.size())
+        res += ' ';
+    }
+    return res;
+}
+
 int main() {
+    // ввод текста
+    std::cout << "Введите сообщение (на английском, слова разделены пробелами, в конце — точка):\n";
+
     // чтение строки
     std::string s;
     std::getline(std::cin, s);
@@ -38,6 +52,12 @@ int main() {
 
     // поменяем пары
     swapWords(words);
+
+    // собираем обратно
+    std::string result = joinWords(words);
+
+    // выводим результат
+    std::cout << result << std::endl;
 
     return 0;
 }
